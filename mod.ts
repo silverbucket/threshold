@@ -80,16 +80,17 @@ async function run() {
 
     const decoder = new TextDecoder();
 
+    let text: string = ""
     for await (const chunk of Deno.stdin.readable) {
-        const text = decoder.decode(chunk);
-        console.log(text);
-        const errors = threshold.processInput(text);
-        if (errors.length) {
-            for (const err of errors) {
-                console.error(err);
-            }
-            Deno.exit(1);
+        text = text + decoder.decode(chunk);
+    }
+    console.log(text);
+    const errors = threshold.processInput(text);
+    if (errors.length) {
+        for (const err of errors) {
+            console.error(err);
         }
+        Deno.exit(1);
     }
     console.log('All thresholds met')
 }
