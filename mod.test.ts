@@ -1,5 +1,5 @@
 import Threshold from "./mod.ts";
-import { testData } from "./test_data.ts";
+import { testData } from "./data.test.ts";
 
 import { assertEquals } from "jsr:@std/assert@1";
 

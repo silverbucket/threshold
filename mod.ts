@@ -3,7 +3,6 @@ type processErrors = string[];
 const DEFAULT_BRANCH_THRESHOLD = "85.0";
 const DEFAULT_LINE_THRESHOLD = "85.0";
 
-
 export default class Threshold {
     readonly branch: string;
     readonly line: string;
@@ -53,7 +52,7 @@ export default class Threshold {
     }
 }
 
-(async function run() {
+async function run() {
     const threshold = new Threshold(
         Deno.args[0] || DEFAULT_BRANCH_THRESHOLD,
         Deno.args[1] || Deno.args[0] || DEFAULT_LINE_THRESHOLD
@@ -76,4 +75,8 @@ export default class Threshold {
             Deno.exit(1);
         }
     }
-}());
+}
+
+if (import.meta.main) {
+    await run();
+}
