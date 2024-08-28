@@ -19,7 +19,7 @@ output to this script, with optional values for `branch` and `threshold` (defaul
 
 ```bash
 deno test --coverage
-deno coverage | deno run @silverbucket/threshold 90 92
+deno coverage | deno run jsr:@silverbucket/threshold 90 92
 ```
 
 In this case the threshold for `branch` is `90%` and the threshold for `line` is `91%`
@@ -29,7 +29,7 @@ In this case the threshold for `branch` is `90%` and the threshold for `line` is
 You can optionally import the `Threshold` class in your program.
 
 ```ts
-import Threshold from "./mod";
+import Threshold from "jsr:@silverbucket/threshold";
 
 const thres = new Threshold(90, 92);
 // get deno converage output
