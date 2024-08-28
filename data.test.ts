@@ -116,5 +116,102 @@ File                 | Branch % | Line % |
 ------------------------------------------
 `,
         []
+    ],
+    [
+        [],
+        `
+-----------------------------------------------------
+File                            | Branch % | Line % |
+-----------------------------------------------------
+ helpers/error-parser.ts        |    100.0 |    2.2 |
+ helpers/objects.ts             |    100.0 |  100.0 |
+ index.test.data.credentials.ts |    100.0 |  100.0 |
+ index.test.data.objects.ts     |    100.0 |  100.0 |
+ index.test.data.platform.ts    |    100.0 |  100.0 |
+ index.test.data.streams.ts     |    100.0 |  100.0 |
+ schemas/activity-object.ts     |    100.0 |  100.0 |
+ schemas/activity-stream.ts     |    100.0 |  100.0 |
+ schemas/platform.ts            |    100.0 |  100.0 |
+ validator.ts                   |    100.0 |   28.6 |
+-----------------------------------------------------
+ All files                      |    100.0 |   88.1 |
+-----------------------------------------------------
+`,
+        []
+    ],
+    [
+        [100, 88],
+        `
+-----------------------------------------------------
+File                            | Branch % | Line % |
+-----------------------------------------------------
+ helpers/error-parser.ts        |    100.0 |    2.2 |
+ helpers/objects.ts             |    100.0 |  100.0 |
+ index.test.data.credentials.ts |    100.0 |  100.0 |
+ index.test.data.objects.ts     |    100.0 |  100.0 |
+ index.test.data.platform.ts    |    100.0 |  100.0 |
+ index.test.data.streams.ts     |    100.0 |  100.0 |
+ schemas/activity-object.ts     |    100.0 |  100.0 |
+ schemas/activity-stream.ts     |    100.0 |  100.0 |
+ schemas/platform.ts            |    100.0 |  100.0 |
+ validator.ts                   |    100.0 |   28.6 |
+-----------------------------------------------------
+ All files                      |    100.0 |   88.1 |
+-----------------------------------------------------
+`,
+        []
+    ],
+    [
+        [100, 90],
+        `
+-----------------------------------------------------
+File                            | Branch % | Line % |
+-----------------------------------------------------
+ helpers/error-parser.ts        |    100.0 |    2.2 |
+ helpers/objects.ts             |    100.0 |  100.0 |
+ index.test.data.credentials.ts |    100.0 |  100.0 |
+ index.test.data.objects.ts     |    100.0 |  100.0 |
+ index.test.data.platform.ts    |    100.0 |  100.0 |
+ index.test.data.streams.ts     |    100.0 |  100.0 |
+ schemas/activity-object.ts     |    100.0 |  100.0 |
+ schemas/activity-stream.ts     |    100.0 |  100.0 |
+ schemas/platform.ts            |    100.0 |  100.0 |
+ validator.ts                   |    100.0 |   28.6 |
+-----------------------------------------------------
+ All files                      |    100.0 |   88.1 |
+-----------------------------------------------------
+`,
+        [
+            "Threshold of 90% for 'line' not met. Actual: 88.1%"
+        ]
+    ],
+    [
+        [],
+        `
+------------------------------------------
+File                 | Branch % | Line % |
+------------------------------------------
+ \x1b[0m\x1b[32mactivity-streams.ts\x1b[0m | \x1b[0m\x1b[32m    90.6\x1b[0m | \x1b[0m\x1b[32m  95.8\x1b[0m |
+------------------------------------------\\n" +
+ \x1b[0m\x1b[32mAll files          \x1b[0m | \x1b[0m\x1b[32m    80.6\x1b[0m | \x1b[0m\x1b[32m  75.8\x1b[0m |
+------------------------------------------
+        `,
+        [
+            "Threshold of 85.0% for 'branch' not met. Actual: 80.6%",
+            "Threshold of 85.0% for 'line' not met. Actual: 75.8%",
+        ]
+    ],
+    [
+        [80, 75],
+        `
+------------------------------------------
+File                 | Branch % | Line % |
+------------------------------------------
+ \x1b[0m\x1b[32mactivity-streams.ts\x1b[0m | \x1b[0m\x1b[32m    90.6\x1b[0m | \x1b[0m\x1b[32m  95.8\x1b[0m |
+------------------------------------------\\n" +
+ \x1b[0m\x1b[32mAll files          \x1b[0m | \x1b[0m\x1b[32m    80.6\x1b[0m | \x1b[0m\x1b[32m  75.8\x1b[0m |
+------------------------------------------
+        `,
+        []
     ]
 ]

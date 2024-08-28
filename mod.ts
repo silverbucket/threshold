@@ -30,6 +30,10 @@ export default class Threshold {
     processInput(text: string): processErrors {
         const errors: processErrors = [];
 
+        // check input and strip out ansi codes
+        // deno-lint-ignore no-control-regex
+        text = text.replace(/[\u001b\u009b][[()#;?]*(?:[0-9]{1,4}(?:;[0-9]{0,4})*)?[0-9A-ORZcf-nqry=><]/g, '');
+
         const regexp = new RegExp(/^\s*All files\s*\|\s*(?<branch>\d+\.\d)\s*\|\s*(?<line>\d+\.\d)/, "gm");
         const match = regexp.exec(text);
 
@@ -77,11 +81,8 @@ async function run() {
     const decoder = new TextDecoder();
 
     for await (const chunk of Deno.stdin.readable) {
-        let text = decoder.decode(chunk);
+        const text = decoder.decode(chunk);
         console.log(text);
-        // check input and strip out ansi codes
-        // deno-lint-ignore no-control-regex
-        text = text.replace(/[\u001b\u009b][[()#;?]*(?:[0-9]{1,4}(?:;[0-9]{0,4})*)?[0-9A-ORZcf-nqry=><]/g, '');
         const errors = threshold.processInput(text);
         if (errors.length) {
             for (const err of errors) {
