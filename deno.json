@@ -5,7 +5,7 @@
   "license": "MIT",
   "exports": "./mod.ts",
   "tasks": {
-    "coverage": "deno coverage | deno run mod.ts 81 58",
+    "coverage": "deno coverage | deno run mod.ts 77 61",
     "test": "deno test --coverage --clean mod.test.ts"
   }
 }

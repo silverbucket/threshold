@@ -3,16 +3,31 @@ type processErrors = string[];
 const DEFAULT_BRANCH_THRESHOLD = "85.0";
 const DEFAULT_LINE_THRESHOLD = "85.0";
 
+/**
+ * Class to check expected deno input for given threshold values
+ */
 export default class Threshold {
     readonly branch: string;
     readonly line: string;
 
+    /**
+     * @param branch minimum value for global branch coverage
+     * @param line minimum value for global line coverage
+     */
     constructor(branch: string = DEFAULT_BRANCH_THRESHOLD, line: string = DEFAULT_LINE_THRESHOLD) {
         this.branch = branch;
         this.line = line;
     }
 
-    processInput(text: string): processErrors | undefined {
+    /**
+     * Given the output of `deno coverage` this will find the global values for `branch` and `line` and compare them
+     * with the given threshold values.
+     *
+     * If successful, this method will return undefined. Otherwise, an array of error messages will be returned.
+     *
+     * @param text Output of the `deno coverage` command
+     */
+    processInput(text: string): processErrors {
         const errors: processErrors = [];
 
         const regexp = new RegExp(/^\s*All files\s*\|\s*(?<branch>\d+\.\d)\s*\|\s*(?<line>\d+\.\d)/, "gm");
@@ -36,7 +51,7 @@ export default class Threshold {
             }
         }
 
-        return errors.length > 0 ? errors : undefined;
+        return errors;
     }
 
     private static compare(name: string, threshold: string, actual: string): string | undefined {
@@ -68,13 +83,14 @@ async function run() {
         // deno-lint-ignore no-control-regex
         text = text.replace(/[\u001b\u009b][[()#;?]*(?:[0-9]{1,4}(?:;[0-9]{0,4})*)?[0-9A-ORZcf-nqry=><]/g, '');
         const errors = threshold.processInput(text);
-        if (errors) {
+        if (errors.length) {
             for (const err of errors) {
                 console.error(err);
             }
             Deno.exit(1);
         }
     }
+    console.log('All thresholds met')
 }
 
 if (import.meta.main) {
